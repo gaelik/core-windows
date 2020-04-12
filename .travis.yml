@@ -1,48 +1,13 @@
 language: cpp
-compiler: gcc
-dist: xenial
-
-os:
-  - linux
-
-before_script:
-  # g++6
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq g++
-
-  - g++   --version
-
-  # TBB
-  - sudo apt-get install -y libtbb-dev
-  - export TBB_ROOT_DIR=/usr/include/tbb/
-
-  # Libcurl
-  - sudo apt-get install -qq libcurl4-openssl-dev
-
-  # BEGIN Install ACE
-
-  ## BEGIN Backup ACE install
-  #
-  #- wget http://download.dre.vanderbilt.edu/previous_versions/ACE-6.0.3.tar.gz
-  #- tar xzf ACE-6.0.3.tar.gz
-  #- cd ACE_wrappers/
-  #- mkdir build
-  #- cd build
-  #- ../configure --disable-ssl &> /dev/null
-  #- echo "Beginning ACE build. May take 10+ minutes."
-  #- make > /dev/null
-  #- sudo make install
-  #- cd ../../
-  #
-  ## END Backup ACE install
-
-  - sudo apt-get install -qq libace-dev
-  - export ACE_ROOT=/usr/include/ace/
-
-  # END Install ACE
-
-  - mkdir build
-  - cd build
-  - cmake -DDEBUG=0 -DUSE_LIBCURL=1 ..
-
-script: make -j4
+os: 
+  - windows
+#  - linux
+#find libace dependency and or make script
+install: 
+  - choco feature enable -n allowEmptyChecksums
+  - choco install tbb
+  - choco install cmake
+  - choco install git
+  - choco install visualstudio2019community
+  - choco install visualstudio2019-workload-nativedesktop
+  - export VS160COMNTOOLS="/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools"
