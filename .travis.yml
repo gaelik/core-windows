@@ -8,7 +8,7 @@ install:
   - powershell -Command Expand-Archive -LiteralPath ACE.zip -DestinationPath .
   - powershell -Command rm Ace.zip
   - powershell -Command Get-ChildItem -Path .
-  - powershell -Command Set-Content -Path '.\ACE_wrappers\ace\config.h' -Value '\#include "ace/config-win32.h"\'
+  - powershell -Command Set-Content -Path '.\ACE_wrappers\ace\config.h' -Value "#include "ace/config-win32.h""
   - powershell -Command Get-Content .\ACE_wrappers\ace\config.h
   - powershell -Command wget "https://github.com/oneapi-src/oneTBB/releases/download/v2020.2/tbb-2020.2-win.zip" -OutFile "tbb.zip"
   - powershell -Command Expand-Archive -LiteralPath tbb.zip -DestinationPath .
