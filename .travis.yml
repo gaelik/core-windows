@@ -1,6 +1,7 @@
 language: cpp
 os: 
   - windows
+solution: ACE_wrappers_vs2019.sln
 #  - linux
 #find libace dependency and or make script
 install: 
@@ -9,13 +10,14 @@ install:
   - powershell -Command Set-Content -Path '.\ACE_wrappers\ace\config.h' -Value '#include "ace/config-win32.h"'
   - powershell -Command wget "https://github.com/oneapi-src/oneTBB/releases/download/v2020.2/tbb-2020.2-win.zip" -OutFile "tbb.zip"
   - powershell -Command Expand-Archive -LiteralPath tbb.zip -DestinationPath .
-  - choco install cmake
-  - choco install visualstudio2019community
-  - choco install visualstudio2019-workload-nativedesktop
-  - export VS160COMNTOOLS="/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools"
-  - export ACE_ROOT="./ACE_wrappers"
-  - export TBB_ROOT_DIR="./tbb"
+#  - choco install cmake
+#  - choco install visualstudio2019community
+#  - choco install visualstudio2019-workload-nativedesktop
+#  - export VS160COMNTOOLS="/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools"
+  - export ACE_ROOT=".\ACE_wrappers"
+  - export TBB_ROOT_DIR=".\tbb"
 
-#build:
-  #- powershell -Command cmake 
+script:
+  - msbuild /p Configuration=Release /p Platform=x64 .\ACE_wrappers\ACE_wrappers_vs2019.sln
+
 #powershell -Command Set-MpPreference -DisableBehaviorMonitoring \$true
