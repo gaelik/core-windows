@@ -4,11 +4,11 @@ os:
 #  - linux
 #find libace dependency and or make script
 install: 
-  - powershell -Command wget "http://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_8/ACE-6.5.8.zip" -OutFile "C:\ACE.zip"
-  - powershell -Command Expand-Archive -LiteralPath C:\ACE.zip -DestinationPath C:\
+  - powershell -Command wget "http://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_8/ACE-6.5.8.zip" -OutFile "ACE.zip"
+  - powershell -Command Expand-Archive -LiteralPath ACE.zip -DestinationPath .
   - powershell -Command Set-Content 'C:\ACE_wrappers\ace\config.h' -Value '#include "ace/config-win32.h"'
-  - powershell -Command wget "https://github.com/oneapi-src/oneTBB/releases/download/v2020.2/tbb-2020.2-win.zip" -OutFile "C:\tbb.zip"
-  - powershell -Command Expand-Archive -LiteralPath C:\tbb.zip -DestinationPath C:\ 
+  - powershell -Command wget "https://github.com/oneapi-src/oneTBB/releases/download/v2020.2/tbb-2020.2-win.zip" -OutFile "tbb.zip"
+  - powershell -Command Expand-Archive -LiteralPath tbb.zip -DestinationPath .
 #- choco install cmake
 #- choco install git
 #- choco install visualstudio2019community
