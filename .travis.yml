@@ -8,6 +8,11 @@ install:
   - choco install tbb
   - choco install cmake
   - choco install git
-  - choco install visualstudio2019community
-  - choco install visualstudio2019-workload-nativedesktop
-  - export VS160COMNTOOLS="/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools"
+#- choco install visualstudio2019community
+#- choco install visualstudio2019-workload-nativedesktop
+#- export VS160COMNTOOLS="/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools"
+#- export ACE_ROOT="/c/ACE_wrappers
+#- export TBB_ROOT_DIR="/c/
+
+#build:
+#  - powershell cmake -G "Visual Studio 16 2019" -A x64  
