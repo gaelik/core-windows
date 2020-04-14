@@ -3,26 +3,23 @@ os:
   - windows
 install: 
   - msbuild="c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
-#  - powershell -Command wget "http://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_8/ACE-6.5.8.zip" -OutFile "ACE.zip"
-#  - powershell -Command Expand-Archive -LiteralPath ACE.zip -DestinationPath .
-#  - powershell -Command rm Ace.zip
-#  - powershell -Command Get-ChildItem -Path .
-#  - powershell -Command Set-Content -Path '.\ACE_wrappers\ace\config.h' -Value '#include "ace/config-win32.h"'
-#  - powershell -Command Get-Content .\ACE_wrappers\ace\config.h
-#  - powershell -Command wget "https://github.com/oneapi-src/oneTBB/releases/download/v2020.2/tbb-2020.2-win.zip" -OutFile "tbb.zip"
-#  - powershell -Command Expand-Archive -LiteralPath tbb.zip -DestinationPath .
-#  - powershell -Command rm tbb.zip
+  - powershell -Command wget "http://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_8/ACE-6.5.8.zip" -OutFile "ACE.zip"
+  - powershell -Command Expand-Archive -LiteralPath ACE.zip -DestinationPath .
+  - powershell -Command rm Ace.zip
+  - powershell -Command Get-ChildItem -Path .
+  - echo '#include "ace/config-win32.h"' > ./ACE_wrappers/ace/config.h
+  - powershell -Command wget "https://github.com/oneapi-src/oneTBB/releases/download/v2020.2/tbb-2020.2-win.zip" -OutFile "tbb.zip"
+  - powershell -Command Expand-Archive -LiteralPath tbb.zip -DestinationPath .
+  - powershell -Command rm tbb.zip
 #  - choco install visualstudio2019community
 #  - choco install visualstudio2019-workload-nativedesktop
 #  - export VS160COMNTOOLS="/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools"
-#  - export ACE_ROOT=".\ACE_wrappers"
-#  - export TBB_ROOT_DIR=".\tbb"
+  - export ACE_ROOT=".\ACE_wrappers"
+  - export TBB_ROOT_DIR=".\tbb"
 
-script:
+#script:
 #  - powershell -Command cmd /c "MSBUILD_PATH /property:Configuration=Release /property:Platform=x64 .\ACE_wrappers\ACE_wrappers_vs2017.sln"
 #  - msbuild /p:Configuration=Release /p:Platform=x64 .\ACE_wrappers\ACE_wrappers_vs2017.sln
-#  - powershell -Command Get-ChildItem -Path /c/Users/travis/.travis/functions
-  - msbuild
 
 
 #powershell -Command Set-MpPreference -DisableBehaviorMonitoring \$true
