@@ -14,12 +14,12 @@ install:
 #  - choco install visualstudio2019community
 #  - choco install visualstudio2019-workload-nativedesktop
 #  - export VS160COMNTOOLS="/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools"
-  - export ACE_ROOT=".\ACE_wrappers"
-  - export TBB_ROOT_DIR=".\tbb"
+  - export ACE_ROOT="/c/Users/travis/core-windows/ACE_wrappers"  
+  - export TBB_ROOT_DIR="/c/Users/travis/core-windows/tbb"
 
 script:
   - powershell -Command {'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe' /property:Configuration=Release /property:Platform=x64 'C:\Users\travis\build\tonymmm1\core-windows\ACE_wrappers\ACE_wrappers_vs2017.sln'}
   - mkdir build
   - cd build
   - cmake ..
-  - powershell -Command {'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe' /property:Configuration=Release /property:Platform=x64  /target:ALL_BUILD:build 'C:\Users\travis\build\tonymmm1\core-windows\build\MaNGOS.sln}
+  - powershell -Command {'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe' /property:Configuration=Release /property:Platform=x64  /target:ALL_BUILD:build 'C:\Users\travis\build\tonymmm1\core-windows\build\MaNGOS.sln'}
