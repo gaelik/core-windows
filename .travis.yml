@@ -2,7 +2,7 @@ language: c++
 os: 
   - windows
 install: 
-  - msbuild="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe"
+  - export msbuild="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe"
   - powershell -Command wget "http://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_8/ACE-6.5.8.zip" -OutFile "ACE.zip"
   - powershell -Command Expand-Archive -LiteralPath ACE.zip -DestinationPath .
   - powershell -Command rm Ace.zip
