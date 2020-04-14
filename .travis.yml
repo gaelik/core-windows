@@ -18,6 +18,5 @@ install:
   - export TBB_ROOT_DIR=".\tbb"
 
 script:
-  - powershell -Command msbuild /property:Configuration=Release /property:Platform=x64 .\ACE_wrappers\ACE_wrappers_vs2017.sln
+  - powershell -Command 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe' /property:Configuration=Release /property:Platform=x64 '.\ACE_wrappers\ACE_wrappers_vs2017.sln'
 
-#powershell -Command Set-MpPreference -DisableBehaviorMonitoring \$true
