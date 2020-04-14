@@ -22,7 +22,7 @@ script:
 #  - powershell -Command cmd /c "MSBUILD_PATH /property:Configuration=Release /property:Platform=x64 .\ACE_wrappers\ACE_wrappers_vs2017.sln"
 #  - msbuild /p:Configuration=Release /p:Platform=x64 .\ACE_wrappers\ACE_wrappers_vs2017.sln
 #  - powershell -Command Get-ChildItem -Path /c/Users/travis/.travis/functions
-  - powershell -Command cmd /c msbuild 
+  - powershell -Command cmd /c "msbuild" 
 
 
 #powershell -Command Set-MpPreference -DisableBehaviorMonitoring \$true
