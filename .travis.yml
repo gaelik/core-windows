@@ -12,6 +12,7 @@ install:
   - powershell -Command wget "https://github.com/oneapi-src/oneTBB/releases/download/v2020.2/tbb-2020.2-win.zip" -OutFile "tbb.zip"
   - powershell -Command Expand-Archive -LiteralPath tbb.zip -DestinationPath .
   - powershell -Command rm tbb.zip
+  - choco install make
 #  - choco install visualstudio2019community
 #  - choco install visualstudio2019-workload-nativedesktop
 #  - export VS160COMNTOOLS="/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools"
@@ -19,10 +20,10 @@ install:
   - export TBB_ROOT_DIR="/c/Users/travis/core-windows/tbb"
 
 script:
-  - cd $ACE_ROOT/ace
+  - cd /c/Users/travis/core-windows/ACE_wrappers/ace
   - make
   - make install
-  - cd 
+  - cd /c/Users/travis/core-windows
   - mkdir build
   - cd build
   - cmake -DDEBUG=0 ..
