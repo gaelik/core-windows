@@ -7,8 +7,8 @@ install:
   - powershell -Command wget "http://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_8/ACE-6.5.8.zip" -OutFile "ACE.zip"
   - powershell -Command Expand-Archive -LiteralPath ACE.zip -DestinationPath .
   - powershell -Command rm Ace.zip
-  - echo '#include "ace/config-win32.h"' > $ACE_ROOT/ace/config.h
-  - echo 'include $(ACE_ROOT)/include/makeinclude/platform_mingw32.GNU' > $ACE_ROOT/include/makeinclude/platform_macros.GNU
+  - echo '#include "ace/config-win32.h"' > $(ACE_ROOT)/ace/config.h
+  - echo 'include $(ACE_ROOT)/include/makeinclude/platform_mingw32.GNU' > $(ACE_ROOT)/include/makeinclude/platform_macros.GNU
   - powershell -Command wget "https://github.com/oneapi-src/oneTBB/releases/download/v2020.2/tbb-2020.2-win.zip" -OutFile "tbb.zip"
   - powershell -Command Expand-Archive -LiteralPath tbb.zip -DestinationPath .
   - powershell -Command rm tbb.zip
@@ -19,7 +19,7 @@ install:
 
 script:
   - cd $(ACE_ROOT)/ace
-  - make
+  - make static_libs_only=1
   - make install
   - cd /c/Users/travis/core-windows
   - mkdir build
