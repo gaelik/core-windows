@@ -8,6 +8,7 @@ install:
   - powershell -Command rm Ace.zip
   - powershell -Command Get-ChildItem -Path .
   - echo '#include "ace/config-win32.h"' > ./ACE_wrappers/ace/config.h
+  - echo 'include $(ACE_ROOT)/include/makeinclude/platform_mingw32.GNU' > ./ACE_wrappers/include/makeinclude/platform_macros.GNU
   - powershell -Command wget "https://github.com/oneapi-src/oneTBB/releases/download/v2020.2/tbb-2020.2-win.zip" -OutFile "tbb.zip"
   - powershell -Command Expand-Archive -LiteralPath tbb.zip -DestinationPath .
   - powershell -Command rm tbb.zip
@@ -18,11 +19,11 @@ install:
   - export TBB_ROOT_DIR="/c/Users/travis/core-windows/tbb"
 
 script:
-  - cmd
-  - 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe' 'C:\Users\travis\build\tonymmm1\core-windows\ACE_wrappers\ACE_wrappers_vs2017.sln' -property:Configuration=Release -property:Platform=x64 -v:d
-  - exit
+  - cd $ACE_ROOT/ace
+  - make
+  - make install
+  - cd 
   - mkdir build
   - cd build
   - cmake -DDEBUG=0 ..
-  - cmd 
-  - 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe' 'C:\Users\travis\build\tonymmm1\core-windows\build\MaNGOS.sln' -property:Configuration=Release -property:Platform=x64 -v:d -target:ALL_BUILD
+  - make
