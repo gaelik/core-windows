@@ -2,13 +2,13 @@ language: c++
 os: 
   - windows
 install: 
-  - export msbuild="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe"
+  - export ACE_ROOT="/c/Users/travis/core-windows/ACE_wrappers"  
+  - export TBB_ROOT_DIR="/c/Users/travis/core-windows/tbb"
   - powershell -Command wget "http://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_8/ACE-6.5.8.zip" -OutFile "ACE.zip"
-  - powershell -Command Expand-Archive -LiteralPath ACE.zip -DestinationPath .
   - powershell -Command rm Ace.zip
   - powershell -Command Get-ChildItem -Path .
   - echo '#include "ace/config-win32.h"' > ./ACE_wrappers/ace/config.h
-  - echo 'include $(ACE_ROOT)/include/makeinclude/platform_mingw32.GNU' > ./ACE_wrappers/include/makeinclude/platform_macros.GNU
+  - echo 'include $(ACE_ROOT)/include/makeinclude/platform_mingw32.GNU' > $(ACE_ROOT)/include/makeinclude/platform_macros.GNU
   - powershell -Command wget "https://github.com/oneapi-src/oneTBB/releases/download/v2020.2/tbb-2020.2-win.zip" -OutFile "tbb.zip"
   - powershell -Command Expand-Archive -LiteralPath tbb.zip -DestinationPath .
   - powershell -Command rm tbb.zip
@@ -16,11 +16,9 @@ install:
 #  - choco install visualstudio2019community
 #  - choco install visualstudio2019-workload-nativedesktop
 #  - export VS160COMNTOOLS="/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools"
-  - export ACE_ROOT="/c/Users/travis/core-windows/ACE_wrappers"  
-  - export TBB_ROOT_DIR="/c/Users/travis/core-windows/tbb"
 
 script:
-  - cd /c/Users/travis/core-windows/ACE_wrappers/ace
+  - cd $(ACE_ROOT)/ace
   - make
   - make install
   - cd /c/Users/travis/core-windows
